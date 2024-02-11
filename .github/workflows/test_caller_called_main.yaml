@@ -1,3 +1,5 @@
+name: Determin Env
+
 on :
     release:
       types: [published]
@@ -14,9 +16,13 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}
         steps:
-          - name: "Checkout"
-            uses: actions/checkout@v3
-          - name: "Use job1"
+            echo "This is production"
+#          - name: Trigger production workflow
+#            uses: actions/trigger-workflow@v2
+#            with:
+#              workflow: job1.yaml
+
+          - name: Trigger stage workflow
             uses: ./.github/workflow/job1.yaml
 
 

@@ -1,5 +1,8 @@
 on:  
   workflow_run:
+    workflows: [Determin Env]
+    types:
+      - completed
 
 jobs:
   build-and-test:
