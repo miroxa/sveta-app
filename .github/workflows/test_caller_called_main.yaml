@@ -17,9 +17,9 @@ jobs:
         needs: [Environment]
         runs-on: ubuntu-latest
         if: ${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}
-#        steps: 
-#          - name: "Progress"   
-#            run: echo "This is production"
+        steps: 
+          - name: "Progress"   
+            run: echo "This is production"
 #          - name: Trigger production workflow
 #            uses: actions/trigger-workflow@v2
 #            with:
