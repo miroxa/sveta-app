@@ -14,7 +14,7 @@ jobs:
     SetJob1:
         needs: [Environment]
         runs-on: ubuntu-latest
-        if: ${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}
+        if: "!contains${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}"
         steps: 
           - name: "Progress"   
             run: echo "This is production"

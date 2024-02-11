@@ -10,6 +10,6 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name: "Check code"
-      uses: 'actions/checkout@v1'
+      uses: 'actions/checkout@v2'
     - name: "Print status"
       run: echo "This is job1"
