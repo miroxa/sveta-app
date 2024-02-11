@@ -1,9 +1,10 @@
-name: Determin Env
+#name: Determin Env
 
 on :
     release:
       types: [published]
 jobs:
+    
     Environment:
       runs-on: ubuntu-latest
       outputs:
@@ -12,12 +13,13 @@ jobs:
       - id: define_environment
         run: echo "ENVIRONMENT=$(echo $GITHUB_REF | cut -d'/' -f 3 | awk -F '-' '{print $1}')" >> $GITHUB_OUTPUT
     SetJob1:
+        name: Determin prd
         needs: [Environment]
         runs-on: ubuntu-latest
-        if: "!contains${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}"
-        steps: 
-          - name: "Progress"   
-            run: echo "This is production"
+        if: ${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}
+#        steps: 
+#          - name: "Progress"   
+#            run: echo "This is production"
 #          - name: Trigger production workflow
 #            uses: actions/trigger-workflow@v2
 #            with:
