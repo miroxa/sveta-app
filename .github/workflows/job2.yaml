@@ -1,0 +1,11 @@
+on:  
+  workflow_run:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Check code"
+      uses: 'actions/checkout@v1'
+    - name: "Print status"
+      run: echo "This is job2"

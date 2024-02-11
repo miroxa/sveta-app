@@ -1,0 +1,27 @@
+on :
+    release:
+      types: [published]
+jobs:
+    Environment:
+      runs-on: ubuntu-latest
+      outputs:
+        ENVIRONMENT: ${{ steps.define_environment.outputs.ENVIRONMENT }}
+      steps:
+      - id: define_environment
+        run: echo "ENVIRONMENT=$(echo $GITHUB_REF | cut -d'/' -f 3 | awk -F '-' '{print $1}')" >> $GITHUB_OUTPUT
+    SetJob1:
+        needs: [Environment]
+        runs-on: ubuntu-latest
+        if: ${{  needs.Environment.outputs.ENVIRONMENT == 'prod' }}
+        steps:
+          - name: "Use job1"
+            uses: ./.github/workflow/job1.yaml
+
+
+
+
+   
+
+
+
+  
